@@ -1,0 +1,29 @@
+<div class="navbar">
+    <a href="#home">Home</a>
+    <div class="subnav">
+      <button class="subnavbtn">Go to projects </button>
+      <div class="subnav-content">
+        <div class="container">
+          <input class="searchinput" type="text" (keyup)="search($event)" [(ngModel)]="searchedWord" (focus)="onInputFocus()">
+
+        <div *ngFor="let res of result; let i=index">
+            <div class="flex-container">
+                <div class="list"><img [src]="res.image.link" width="30"></div>
+                <div class="list">
+                  <li [ngClass]="{'selected': i === 0}" class="project"  #groupRef [tabindex]="getTabIndex(i)"  (keydown)="onKeydown($event, res.url, groupRef)" (focus)="onFocus(groupRef)"><p [innerHTML]="highlightText(res.name, searchedWord)"></p></li>
+                  <li *ngFor="let gr of res.groups; let x=index; let last=last " #projectRef [tabindex]="getTabIndex(null)"  (keydown)="onKeydown($event, gr.url, projectRef)" (focus)="onFocus(projectRef)"><p [innerHTML]="highlightText(gr.name, searchedWord)"></p> </li>
+                  <p class="add"> + Add Group</p>
+                </div>
+            </div>
+
+        </div>
+
+      </div>
+      </div>
+    </div>
+    <a href="#product">Products</a>
+  </div>
+
+
+
+
