@@ -56,7 +56,7 @@ export class AppComponent {
   onInputFocus(): void{
     const el = document.querySelector('.selected') as HTMLElement | null;
     if(!el) {
-     const firstIndex = document.querySelector('[tabindex="2"]') as HTMLElement | null;
+     const firstIndex = document.querySelector('[tabindex="1"]') as HTMLElement | null;
      firstIndex?.classList.add('selected');
     }
   }
